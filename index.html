@@ -10,60 +10,61 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            background-color: #f3f4f6;
-            color: #1f2937;
+            background-color: #f4f4f6;
+            color: #2d3139;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        /* Custom radio matching the bronze/gold accents and burned titanium accents */
         .custom-radio:checked + label {
-            border-color: #0284c7;
-            background-color: rgba(2, 132, 199, 0.04);
+            border-color: #c5a059;
+            background-color: rgba(197, 160, 89, 0.05);
         }
         .custom-radio:checked + label .radio-dot {
-            border-color: #0284c7;
-            background-color: #0284c7;
-            box-shadow: 0 0 8px rgba(2, 132, 199, 0.3);
+            border-color: #c5a059;
+            background-color: #c5a059;
+            box-shadow: 0 0 8px rgba(197, 160, 89, 0.4);
         }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4 sm:p-6">
  
     <!-- Container Frame mirroring wireframe layout properties -->
-    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl border border-neutral-200 overflow-hidden p-6 relative">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl border border-neutral-200/80 overflow-hidden p-6 relative">
         
-        <!-- Global App Branding Header referencing the official logo asset -->
+        <!-- Global App Branding Header referencing the official logo asset with a fully transparent background profile -->
         <div class="flex flex-col items-center mb-6 border-b border-neutral-100 pb-5">
-            <img src="Official logo_001.png" alt="CycleExpert Logo" class="w-32 h-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.06)] rounded-xl">
+            <img src="Official logo_001.jpg" alt="CycleExpert Logo" class="w-full max-w-[240px] h-auto object-contain bg-transparent mix-blend-multiply drop-shadow-[0_4px_6px_rgba(0,0,0,0.04)]">
         </div>
  
         <!-- ================= STEP 1: REGISTER ================= -->
         <div id="screen-register" class="space-y-6">
             <div class="text-center">
-                <h2 class="text-2xl font-bold tracking-tight text-neutral-900">Create Account</h2>
-                <p class="text-neutral-500 text-xs mt-1">Register to access queueing services</p>
+                <h2 class="text-2xl font-bold tracking-tight text-neutral-800">Create Account</h2>
+                <p class="text-neutral-500 text-xs mt-1">Register to access premium queueing services</p>
             </div>
             <form onsubmit="handleRegistration(event)" class="space-y-4">
                 <div class="relative">
                     <i class="fa-regular fa-user absolute left-4 top-3.5 text-neutral-400 text-sm"></i>
-                    <input type="text" id="reg-name" placeholder="Juan Dela Cruz" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
+                    <input type="text" id="reg-name" placeholder="Juan Dela Cruz" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-[#c5a059] focus:bg-white text-neutral-800 transition-colors">
                 </div>
                 <div class="relative">
                     <i class="fa-regular fa-envelope absolute left-4 top-3.5 text-neutral-400 text-sm"></i>
-                    <input type="email" id="reg-email" placeholder="juan@email.com" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
+                    <input type="email" id="reg-email" placeholder="juan@email.com" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-[#c5a059] focus:bg-white text-neutral-800 transition-colors">
                 </div>
                 <div class="relative">
                     <i class="fa-solid fa-phone absolute left-4 top-3.5 text-neutral-400 text-sm"></i>
-                    <input type="tel" id="reg-phone" placeholder="+63 917 345 6789" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
+                    <input type="tel" id="reg-phone" placeholder="+63 917 345 6789" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-[#c5a059] focus:bg-white text-neutral-800 transition-colors">
                 </div>
                 <div class="relative">
                     <i class="fa-solid fa-lock absolute left-4 top-3.5 text-neutral-400 text-sm"></i>
-                    <input type="password" id="reg-pass" placeholder="••••••••" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
+                    <input type="password" id="reg-pass" placeholder="••••••••" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-[#c5a059] focus:bg-white text-neutral-800 transition-colors">
                 </div>
-                <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-sm shadow-md shadow-sky-600/10">
-                    Create Account <i class="fa-solid fa-arrow-right text-xs"></i>
+                <button type="submit" class="w-full bg-[#343a40] hover:bg-[#212529] text-[#e9ecef] border border-[#495057] font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-sm shadow-md shadow-neutral-900/10">
+                    Create Account <i class="fa-solid fa-arrow-right text-xs text-[#c5a059]"></i>
                 </button>
             </form>
             <div class="text-center text-xs text-neutral-500">
-                Already have an account? <button onclick="navigateTo('screen-login')" class="text-sky-600 font-medium hover:underline focus:outline-none ml-1">Login</button>
+                Already have an account? <button onclick="navigateTo('screen-login')" class="text-[#c5a059] font-semibold hover:underline focus:outline-none ml-1">Login</button>
             </div>
         </div>
  
@@ -71,51 +72,51 @@
         <div id="screen-login" class="hidden space-y-6">
             <div class="text-center flex flex-col items-center">
                 <div class="w-12 h-12 bg-neutral-50 rounded-full flex items-center justify-center mb-2 border border-neutral-200">
-                    <i class="fa-solid fa-right-to-bracket text-sky-600 text-lg pl-0.5"></i>
+                    <i class="fa-solid fa-right-to-bracket text-[#c5a059] text-lg pl-0.5"></i>
                 </div>
-                <h2 class="text-2xl font-bold tracking-tight text-neutral-900">Welcome Back</h2>
+                <h2 class="text-2xl font-bold tracking-tight text-neutral-800">Welcome Back</h2>
                 <p class="text-neutral-500 text-xs mt-1">Login to access your queue dashboard</p>
             </div>
             <form onsubmit="handleLogin(event)" class="space-y-4">
                 <div class="relative">
                     <i class="fa-regular fa-envelope absolute left-4 top-3.5 text-neutral-400 text-sm"></i>
-                    <input type="email" id="login-email" placeholder="juan@email.com" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
+                    <input type="email" id="login-email" placeholder="juan@email.com" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-[#c5a059] focus:bg-white text-neutral-800 transition-colors">
                 </div>
                 <div class="relative">
                     <i class="fa-solid fa-lock absolute left-4 top-3.5 text-neutral-400 text-sm"></i>
-                    <input type="password" id="login-pass" placeholder="••••••••" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
+                    <input type="password" id="login-pass" placeholder="••••••••" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-[#c5a059] focus:bg-white text-neutral-800 transition-colors">
                 </div>
                 <div id="login-error" class="text-red-600 text-xs text-center hidden font-medium">
                     <i class="fa-solid fa-circle-exclamation mr-1"></i> Invalid registration credentials mismatch.
                 </div>
-                <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-sm shadow-md shadow-sky-600/10">
-                    Login <i class="fa-solid fa-arrow-right text-xs"></i>
+                <button type="submit" class="w-full bg-[#343a40] hover:bg-[#212529] text-[#e9ecef] border border-[#495057] font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-sm shadow-md shadow-neutral-900/10">
+                    Login <i class="fa-solid fa-arrow-right text-xs text-[#c5a059]"></i>
                 </button>
             </form>
             <div class="text-center text-xs text-neutral-500">
-                Don't have an account? <button onclick="navigateTo('screen-register')" class="text-sky-600 font-medium hover:underline focus:outline-none ml-1">Register</button>
+                Don't have an account? <button onclick="navigateTo('screen-register')" class="text-[#c5a059] font-semibold hover:underline focus:outline-none ml-1">Register</button>
             </div>
         </div>
  
         <!-- ================= STEP 3: QUEUE DASHBOARD ================= -->
         <div id="screen-dashboard" class="hidden space-y-6">
             <div class="text-center">
-                <div class="text-xs text-sky-700 font-semibold mb-1 bg-sky-50 inline-block px-3 py-1 rounded-full border border-sky-100">
+                <div class="text-xs text-[#c5a059] font-bold mb-1 bg-amber-50 inline-block px-3 py-1 rounded-full border border-amber-200/60">
                     <i class="fa-regular fa-circle-user mr-1"></i> <span id="user-display-name">Guest</span>
                 </div>
-                <h2 class="text-xl font-bold tracking-tight text-neutral-900">Queue Dashboard</h2>
+                <h2 class="text-xl font-bold tracking-tight text-neutral-800">Queue Dashboard</h2>
                 <p class="text-neutral-500 text-xs mt-1">Select a service and join the queue</p>
             </div>
  
             <!-- Stats Module Layout -->
             <div class="grid grid-cols-2 gap-4">
                 <div class="bg-neutral-50 p-3.5 rounded-xl border border-neutral-200 text-center">
-                    <p class="text-[11px] text-neutral-500 font-medium uppercase tracking-wider">Current Queue</p>
-                    <p class="text-2xl font-bold text-sky-600 mt-1">#11</p>
+                    <p class="text-[11px] text-neutral-500 font-semibold uppercase tracking-wider">Current Queue</p>
+                    <p class="text-2xl font-bold text-[#4682b4] mt-1">#11</p>
                 </div>
                 <div class="bg-neutral-50 p-3.5 rounded-xl border border-neutral-200 text-center">
-                    <p class="text-[11px] text-neutral-500 font-medium uppercase tracking-wider">Est. Wait</p>
-                    <p class="text-2xl font-bold text-neutral-800 mt-1">1 min</p>
+                    <p class="text-[11px] text-neutral-500 font-semibold uppercase tracking-wider">Est. Wait</p>
+                    <p class="text-2xl font-bold text-neutral-700 mt-1">1 min</p>
                 </div>
             </div>
  
@@ -181,7 +182,7 @@
                     </div>
                 </div>
                 
-                <input type="text" id="custom-service-field" placeholder="Specify required service..." oninput="evaluateCustomInput()" class="hidden w-full mt-3 bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
+                <input type="text" id="custom-service-field" placeholder="Specify required service..." oninput="evaluateCustomInput()" class="hidden w-full mt-3 bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#c5a059] focus:bg-white text-neutral-900 transition-colors">
             </div>
  
             <button onclick="submitToQueue()" id="btn-join-queue" disabled class="w-full bg-neutral-100 text-neutral-400 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed transition-all text-sm">
@@ -192,66 +193,66 @@
         <!-- ================= STEP 4: YOU'RE IN QUEUE ================= -->
         <div id="screen-waiting" class="hidden text-center space-y-6 py-4">
             <div class="relative flex items-center justify-center mx-auto w-20 h-20">
-                <div class="absolute inset-0 rounded-full border-4 border-neutral-200 border-t-sky-600 animate-spin"></div>
-                <i class="fa-regular fa-clock text-sky-600 text-3xl"></i>
+                <div class="absolute inset-0 rounded-full border-4 border-neutral-200 border-t-[#4682b4] animate-spin"></div>
+                <i class="fa-regular fa-clock text-[#4682b4] text-3xl"></i>
             </div>
  
             <div class="space-y-1">
-                <h2 class="text-2xl font-bold text-neutral-900">You're in Queue!</h2>
-                <p class="text-neutral-500 text-sm">Your queue number: <span class="text-sky-600 font-bold">#12</span></p>
+                <h2 class="text-2xl font-bold text-neutral-800">You're in Queue!</h2>
+                <p class="text-neutral-500 text-sm">Your queue number: <span class="text-[#c5a059] font-bold">#12</span></p>
                 <p class="text-xs text-neutral-400 pt-1">Please wait while we process your request...</p>
             </div>
  
             <div class="bg-neutral-50 border border-neutral-200 py-4 rounded-xl mx-4">
                 <p class="text-[10px] text-neutral-500 font-semibold uppercase tracking-wider">Estimated Wait Time</p>
-                <p class="text-2xl font-black text-neutral-800 mt-1">1 minute</p>
+                <p class="text-2xl font-black text-neutral-700 mt-1">1 minute</p>
             </div>
  
-            <button onclick="navigateTo('screen-servicing')" class="w-full bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 font-medium py-2.5 rounded-xl text-xs transition-colors tracking-wide">
+            <button onclick="navigateTo('screen-servicing')" class="w-full bg-amber-50 hover:bg-amber-100 text-[#c5a059] border border-amber-200 font-medium py-2.5 rounded-xl text-xs transition-colors tracking-wide">
                 Simulate Admin: Begin Service <i class="fa-solid fa-wrench ml-1 text-[10px]"></i>
             </button>
         </div>
  
         <!-- ================= STEP 5: BEING SERVICED ================= -->
         <div id="screen-servicing" class="hidden text-center space-y-6 py-4">
-            <div class="relative flex items-center justify-center mx-auto w-20 h-20 bg-amber-50 rounded-full border border-amber-200 text-amber-600">
+            <div class="relative flex items-center justify-center mx-auto w-20 h-20 bg-amber-50 rounded-full border border-amber-200 text-[#c5a059]">
                 <i class="fa-solid fa-screwdriver-wrench text-3xl animate-bounce"></i>
             </div>
  
             <div class="space-y-1">
-                <h2 class="text-2xl font-bold text-amber-600">Being Serviced</h2>
+                <h2 class="text-2xl font-bold text-[#c5a059]">Being Serviced</h2>
                 <p class="text-neutral-600 text-sm px-4">Our master mechanic is currently operating on your motorcycle.</p>
-                <p class="text-xs text-sky-700 font-semibold bg-sky-50 inline-block px-3 py-1 rounded-full border border-sky-100 mt-3" id="live-service-label">Service: Engine Tune-up</p>
+                <p class="text-xs text-[#c5a059] font-semibold bg-amber-50 inline-block px-3 py-1 rounded-full border border-amber-200 mt-3" id="live-service-label">Service: Engine Tune-up</p>
             </div>
  
             <div class="bg-neutral-50 border border-neutral-200 p-4 rounded-xl mx-4 text-left text-xs space-y-2.5">
                 <div class="flex justify-between"><span class="text-neutral-500 font-medium">Assigned Station:</span><span class="text-neutral-800 font-bold">Bay Counter #02</span></div>
-                <div class="flex justify-between"><span class="text-neutral-500 font-medium">Status:</span><span class="text-amber-600 font-bold animate-pulse">Active Operations</span></div>
+                <div class="flex justify-between"><span class="text-neutral-500 font-medium">Status:</span><span class="text-[#c5a059] font-bold animate-pulse">Active Operations</span></div>
             </div>
  
-            <button onclick="navigateTo('screen-cashier')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/10 text-sm">
+            <button onclick="navigateTo('screen-cashier')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-700/10 text-sm">
                 Proceed to Cashier <i class="fa-solid fa-receipt text-xs"></i>
             </button>
         </div>
  
         <!-- ================= STEP 6: PROCEED TO CASHIER ================= -->
         <div id="screen-cashier" class="hidden text-center space-y-6 py-4">
-            <div class="w-16 h-16 bg-sky-50 border border-sky-100 rounded-full flex items-center justify-center mx-auto text-sky-600 text-2xl shadow-sm">
+            <div class="w-16 h-16 bg-neutral-50 border border-neutral-200 rounded-full flex items-center justify-center mx-auto text-[#4682b4] text-2xl shadow-sm">
                 <i class="fa-solid fa-cash-register"></i>
             </div>
  
             <div class="space-y-1">
-                <h2 class="text-2xl font-bold text-neutral-900">Proceed to Cashier</h2>
+                <h2 class="text-2xl font-bold text-neutral-800">Proceed to Cashier</h2>
                 <p class="text-neutral-600 text-sm px-4">Your mechanical operations are complete. Please visit the payment counter.</p>
             </div>
  
             <div class="bg-neutral-50 border border-neutral-200 p-4 rounded-xl mx-4 text-left text-xs space-y-2.5">
-                <div class="flex justify-between"><span class="text-neutral-500 font-medium">Queue Identifier:</span><span class="text-sky-600 font-bold">#12</span></div>
-                <div class="flex justify-between"><span class="text-neutral-500 font-medium">Invoice Status:</span><span class="text-emerald-600 font-bold">Pending Settlement</span></div>
+                <div class="flex justify-between"><span class="text-neutral-500 font-medium">Queue Identifier:</span><span class="text-[#4682b4] font-bold">#12</span></div>
+                <div class="flex justify-between"><span class="text-neutral-500 font-medium">Invoice Status:</span><span class="text-emerald-700 font-bold">Pending Settlement</span></div>
             </div>
  
-            <button onclick="navigateTo('screen-complete')" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 text-sm shadow-md shadow-sky-600/10">
-                Finalize & Close Ticket <i class="fa-solid fa-check-double text-xs"></i>
+            <button onclick="navigateTo('screen-complete')" class="w-full bg-[#343a40] hover:bg-[#212529] text-[#e9ecef] font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 text-sm shadow-md">
+                Finalize & Close Ticket <i class="fa-solid fa-check-double text-xs text-[#c5a059]"></i>
             </button>
         </div>
  
@@ -262,8 +263,8 @@
             </div>
  
             <div class="space-y-1">
-                <h2 class="text-2xl font-bold tracking-tight text-neutral-900">Service Complete!</h2>
-                <p class="text-neutral-500 text-xs">Thank you for choosing <span class="text-sky-600 font-semibold">CycleExpert</span></p>
+                <h2 class="text-2xl font-bold tracking-tight text-neutral-800">Service Complete!</h2>
+                <p class="text-neutral-500 text-xs">Thank you for choosing <span class="text-[#c5a059] font-bold">CycleExpert</span></p>
             </div>
  
             <!-- Ticket Metadata Summary Module showing the dynamic data -->
@@ -278,11 +279,11 @@
                 </div>
                 <div class="flex justify-between border-t border-neutral-200 pt-2">
                     <span class="text-neutral-500 font-medium">Service rendered</span>
-                    <span class="font-bold text-sky-700 truncate max-w-[180px]" id="summary-service-title">---</span>
+                    <span class="font-bold text-[#4682b4] truncate max-w-[180px]" id="summary-service-title">---</span>
                 </div>
                 <div class="flex justify-between border-t border-neutral-200 pt-2">
                     <span class="text-neutral-500 font-medium">Queue #</span>
-                    <span class="font-black text-neutral-900">#12</span>
+                    <span class="font-black text-neutral-800">#12</span>
                 </div>
             </div>
  
@@ -301,12 +302,12 @@
             <!-- ================= CHOICE AREA: ACTION PANELS ================= -->
             <div class="pt-4 border-t border-neutral-200 mx-2 space-y-2.5">
                 <!-- Choice A: Return to Main Dashboard to request another service -->
-                <button onclick="returnToMainDashboard()" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-xs transition-colors shadow-md shadow-sky-600/10">
-                    <i class="fa-solid fa-gauge-high text-[11px]"></i> Back to Main
+                <button onclick="returnToMainDashboard()" class="w-full bg-[#343a40] hover:bg-[#212529] text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-xs transition-colors shadow-md">
+                    <i class="fa-solid fa-gauge-high text-[11px] text-[#c5a059]"></i> Back to Main
                 </button>
                 
                 <!-- Choice B: Terminate Session/End of Queue -->
-                <button onclick="endOfQueue()" class="w-full bg-neutral-100 hover:bg-neutral-200 text-red-600 font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-xs transition-colors border border-neutral-200">
+                <button onclick="endOfQueue()" class="w-full bg-neutral-100 hover:bg-neutral-200 text-red-700 font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-xs transition-colors border border-neutral-200">
                     <i class="fa-solid fa-right-from-bracket text-[11px]"></i> End of Queue
                 </button>
             </div>
@@ -396,7 +397,7 @@
             
             const btn = document.getElementById('btn-join-queue');
             btn.disabled = false;
-            btn.className = "w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer text-sm shadow-md shadow-sky-600/10";
+            btn.className = "w-full bg-[#343a40] hover:bg-[#212529] text-[#e9ecef] border border-[#495057] font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer text-sm shadow-md";
         }
  
         function evaluateCustomInput() {
@@ -406,7 +407,7 @@
             if(val.length > 0) {
                 transientSelectedService = val;
                 btn.disabled = false;
-                btn.className = "w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer text-sm shadow-md shadow-sky-600/10";
+                btn.className = "w-full bg-[#343a40] hover:bg-[#212529] text-[#e9ecef] border border-[#495057] font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer text-sm shadow-md";
             } else {
                 btn.disabled = true;
                 btn.className = "w-full bg-neutral-100 text-neutral-400 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed transition-all text-sm";
