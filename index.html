@@ -196,7 +196,7 @@
                         </label>
                     </div>
                 </div>
-                <input type="text" id="custom-service-field" placeholder="Specify required service..." oninput="evaluateCustomInput()" class="hidden w-full mt-2 bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#c5a059] focus:bg-white text-neutral-900 transition-colors">
+                <input type="text" id="custom-service-field" placeholder="Specify required service (e.g., Engine Overhaul)..." oninput="evaluateCustomInput()" class="hidden w-full mt-2 bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#c5a059] focus:bg-white text-neutral-900 transition-colors">
             </div>
 
             <!-- Cost Indicator Flag -->
@@ -246,7 +246,7 @@
             <div class="pt-2 space-y-3">
                 <p class="text-xs font-bold text-neutral-700 uppercase tracking-wider">Your Next Proceed?</p>
                 <div class="grid grid-cols-2 gap-3 px-4">
-                    <button onclick="navigateTo('screen-servicing')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs transition-colors shadow-md flex items-center justify-center gap-1.5">
+                    <button onclick="proceedToServicingScreen()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs transition-colors shadow-md flex items-center justify-center gap-1.5">
                         <i class="fa-solid fa-check text-[10px]"></i> Yes
                     </button>
                     <button onclick="returnToMainDashboard()" class="bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-bold py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5">
@@ -257,22 +257,38 @@
         </div>
  
         <!-- ================= STEP 5: BEING SERVICED ================= -->
-        <div id="screen-servicing" class="hidden text-center space-y-6 py-4">
-            <div class="relative flex items-center justify-center mx-auto w-20 h-20 bg-amber-50 rounded-full border border-amber-200 text-[#c5a059]">
-                <i class="fa-solid fa-screwdriver-wrench text-3xl animate-bounce"></i>
+        <div id="screen-servicing" class="hidden text-center space-y-5 py-4">
+            <div class="relative flex items-center justify-center mx-auto w-16 h-16 bg-amber-50 rounded-full border border-amber-200 text-[#c5a059]">
+                <i class="fa-solid fa-screwdriver-wrench text-2xl animate-bounce"></i>
             </div>
             <div class="space-y-1">
-                <h2 class="text-2xl font-bold text-[#c5a059]">Being Serviced</h2>
-                <p class="text-neutral-600 text-sm px-4">Our master mechanic is currently operating on your motorcycle.</p>
-                <p class="text-xs text-[#c5a059] font-semibold bg-amber-50 inline-block px-3 py-1 rounded-full border border-amber-200 mt-3" id="live-service-label">Service: Engine Tune-up</p>
+                <h2 class="text-xl font-bold text-[#c5a059]">Being Serviced</h2>
+                <p class="text-neutral-600 text-xs px-4">Our master mechanic is currently operating on your motorcycle.</p>
+                <p class="text-xs text-[#c5a059] font-semibold bg-amber-50 inline-block px-3 py-1 rounded-full border border-amber-200 mt-2" id="live-service-label">Service: Engine Tune-up</p>
             </div>
-            <div class="bg-neutral-50 border border-neutral-200 p-4 rounded-xl mx-4 text-left text-xs space-y-2.5">
+
+            <!-- MANUAL COST DIAGNOSIS FIELD FOR MECHANIC -->
+            <div id="mechanic-cost-entry" class="hidden bg-neutral-50 border border-neutral-200 p-4 rounded-xl mx-4 text-left space-y-2">
+                <label class="text-[11px] font-bold text-[#c5a059] uppercase tracking-wide flex items-center gap-1">
+                    <i class="fa-solid fa-stethoscope"></i> Mechanic Diagnostic Assessment
+                </label>
+                <p class="text-[11px] text-neutral-400">Please provide the dynamic repair costing summary configuration below:</p>
+                <div class="relative mt-1">
+                    <span class="absolute left-3.5 top-2.5 text-neutral-500 font-bold text-sm">₱</span>
+                    <input type="number" id="mechanic-custom-cost" min="0" placeholder="0.00" oninput="validateMechanicCostInput()" class="w-full bg-white border border-neutral-300 rounded-xl pl-8 pr-4 py-2 text-sm font-bold focus:outline-none focus:border-[#c5a059] text-neutral-800">
+                </div>
+            </div>
+
+            <div class="bg-neutral-50 border border-neutral-200 p-3 rounded-xl mx-4 text-left text-xs space-y-2">
                 <div class="flex justify-between"><span class="text-neutral-500 font-medium">Assigned Station:</span><span class="text-neutral-800 font-bold"> Mechanic #02</span></div>
-                <div class="flex justify-between"><span class="text-neutral-500 font-medium">Status:</span><span class="text-[#c5a059] font-bold animate-pulse">Active </span></div>
+                <div class="flex justify-between"><span class="text-neutral-500 font-medium">Status:</span><span class="text-[#c5a059] font-bold animate-pulse">Active Operations</span></div>
             </div>
-            <button onclick="navigateTo('screen-cashier')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-700/10 text-sm">
-                Proceed to Cashier <i class="fa-solid fa-receipt text-xs"></i>
-            </button>
+            
+            <div class="px-4">
+                <button onclick="submitMechanicDiagnosis()" id="btn-proceed-cashier" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-700/10 text-sm transition-all">
+                    Proceed to Cashier <i class="fa-solid fa-receipt text-xs"></i>
+                </button>
+            </div>
         </div>
  
         <!-- ================= STEP 6: PROCEED TO CASHIER ================= -->
@@ -413,6 +429,7 @@
         let loggedInUser = null;
         let transientSelectedService = "";
         let transientSelectedCost = 0;
+        let isCustomRepairMode = false;
         let assignedRatingValue = 0;
  
         function navigateTo(targetScreenId) {
@@ -454,7 +471,7 @@
                 email: inputEmail,
                 phone: inputPhone,
                 pass: inputPass,
-                history: [] // Holds completed service tickets dynamically
+                history: [] 
             });
  
             document.getElementById('reg-name').value = "";
@@ -514,7 +531,7 @@
                         : `<i class="fa-regular fa-star text-neutral-300 text-[9px]"></i>`;
                 }
 
-                const costDisplay = item.cost > 0 ? `₱${item.cost.toFixed(2)}` : 'TBD';
+                const costDisplay = item.cost > 0 ? `₱${item.cost.toFixed(2)}` : '₱0.00';
 
                 const entry = document.createElement('div');
                 entry.className = "bg-neutral-50 border border-neutral-200/70 rounded-lg p-2 flex justify-between items-center gap-2";
@@ -560,13 +577,15 @@
             const inputField = document.getElementById('custom-service-field');
             const costPanel = document.getElementById('dashboard-cost-view');
             if(isCustom) {
+                isCustomRepairMode = true;
                 inputField.classList.remove('hidden');
                 inputField.focus();
-                transientSelectedCost = 0; // Custom service is to be determined later
+                transientSelectedCost = 0; 
                 costPanel.classList.remove('hidden');
                 document.getElementById('dashboard-cost-amount').innerText = "TBD (On Assessment)";
                 evaluateCustomInput();
             } else {
+                isCustomRepairMode = false;
                 inputField.classList.add('hidden');
                 transientSelectedService = "";
                 transientSelectedCost = 0;
@@ -612,15 +631,54 @@
         function submitToQueue() {
             if(!transientSelectedService) return;
             document.getElementById('live-service-label').innerText = "Service: " + transientSelectedService;
+            navigateTo('screen-waiting');
+        }
+
+        function proceedToServicingScreen() {
+            const mechanicPanel = document.getElementById('mechanic-cost-entry');
+            const actionBtn = document.getElementById('btn-proceed-cashier');
             
-            // Map parameters forward to display steps
+            if(isCustomRepairMode) {
+                mechanicPanel.classList.remove('hidden');
+                document.getElementById('mechanic-custom-cost').value = "";
+                // Disable button until mechanic enters a diagnostic layout value cost
+                actionBtn.setAttribute('disabled', 'true');
+                actionBtn.className = "w-full bg-neutral-200 text-neutral-400 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed text-sm transition-all";
+            } else {
+                mechanicPanel.classList.add('hidden');
+                actionBtn.removeAttribute('disabled');
+                actionBtn.className = "w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-700/10 text-sm transition-all";
+            }
+            navigateTo('screen-servicing');
+        }
+
+        function validateMechanicCostInput() {
+            const costInput = document.getElementById('mechanic-custom-cost').value;
+            const actionBtn = document.getElementById('btn-proceed-cashier');
+            
+            if(costInput !== "" && parseFloat(costInput) >= 0) {
+                actionBtn.removeAttribute('disabled');
+                actionBtn.className = "w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-700/10 text-sm transition-all";
+            } else {
+                actionBtn.setAttribute('disabled', 'true');
+                actionBtn.className = "w-full bg-neutral-200 text-neutral-400 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed text-sm transition-all";
+            }
+        }
+
+        function submitMechanicDiagnosis() {
+            if(isCustomRepairMode) {
+                const manualCost = parseFloat(document.getElementById('mechanic-custom-cost').value);
+                transientSelectedCost = isNaN(manualCost) ? 0 : manualCost;
+            }
+
+            // Map variables dynamically forward into remaining display checkpoints
             document.getElementById('cashier-service-title').innerText = transientSelectedService;
-            document.getElementById('cashier-cost-due').innerText = transientSelectedCost > 0 ? `₱${transientSelectedCost.toFixed(2)}` : "₱0.00 (Free Diagnostic)";
+            document.getElementById('cashier-cost-due').innerText = `₱${transientSelectedCost.toFixed(2)}`;
             
             document.getElementById('summary-service-title').innerText = transientSelectedService;
-            document.getElementById('summary-service-cost').innerText = transientSelectedCost > 0 ? `₱${transientSelectedCost.toFixed(2)}` : "₱0.00";
+            document.getElementById('summary-service-cost').innerText = `₱${transientSelectedCost.toFixed(2)}`;
             
-            navigateTo('screen-waiting');
+            navigateTo('screen-cashier');
         }
  
         function setRating(count) {
@@ -644,7 +702,7 @@
                 loggedInUser.history.unshift({
                     service: transientSelectedService,
                     cost: transientSelectedCost,
-                    rating: assignedRatingValue || 5, // Default to 5 stars if untouched
+                    rating: assignedRatingValue || 5, 
                     timestamp: timestampStr
                 });
             }
@@ -655,12 +713,15 @@
             transientSelectedService = "";
             transientSelectedCost = 0;
             assignedRatingValue = 0;
+            isCustomRepairMode = false;
+            
             const selectedRadio = document.querySelector('input[name="srv_opt"]:checked');
             if (selectedRadio) selectedRadio.checked = false;
             
             document.getElementById('custom-service-field').value = "";
             document.getElementById('custom-service-field').classList.add('hidden');
             document.getElementById('dashboard-cost-view').classList.add('hidden');
+            document.getElementById('mechanic-cost-entry').classList.add('hidden');
             updateQueueButtonState(false);
             
             setRating(0);
