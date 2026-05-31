@@ -101,7 +101,7 @@
                     <input type="password" id="login-pass" placeholder="••••••••" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-[#c5a059] focus:bg-white text-neutral-800 transition-colors">
                 </div>
                 <div id="login-error" class="text-red-600 text-xs text-center hidden font-medium">
-                    <i class="fa-solid fa-circle-exclamation mr-1"></i> Invalid registration credentials mismatch.
+                    <i class="fa-solid fa-circle-exclamation mr-1"></i> Invalid email or password selection match.
                 </div>
                 <button type="submit" class="w-full bg-[#343a40] hover:bg-[#212529] text-[#e9ecef] border border-[#495057] font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-sm shadow-md shadow-neutral-900/10">
                     Login <i class="fa-solid fa-arrow-right text-xs text-[#c5a059]"></i>
@@ -287,7 +287,7 @@
  
             <div class="space-y-1">
                 <h2 class="text-2xl font-bold tracking-tight text-neutral-800">Service Complete!</h2>
-                <p class="text-neutral-500 text-xs">Thank you for choosing <span class="text-[#c5a059] font-bold">CycleExpert</span></p>
+                <p class="text-neutral-500 text-xs">Thank you for choosing <span class="text-[#c5a059] font-bold">CycleExpert-Q </span></p>
             </div>
  
             <!-- Ticket Metadata Summary Module showing the dynamic data -->
@@ -373,8 +373,9 @@
  
     <!-- ================= CONTROLLER INTERACTION SCRIPT ================= -->
     <script>
-        // Internal mock database state variables storing input values securely
-        let registeredUser = null;
+        // Array acting as a saved account database for continuous registrations & logins
+        let savedAccounts = [];
+        let loggedInUser = null;
         let transientSelectedService = "";
  
         // Standard Navigation Controller
@@ -397,7 +398,7 @@
             }
         }
  
-        // Step 1: Capture registration inputs and advance directly to Step 2
+        // Step 1: Capture registration inputs and save to account profile records list
         function handleRegistration(e) {
             e.preventDefault();
             
@@ -412,39 +413,58 @@
             const inputPhone = document.getElementById('reg-phone').value.trim();
             const inputPass = document.getElementById('reg-pass').value;
  
-            // Save user model data configuration
-            registeredUser = {
+            // Check if account already exists
+            const existingAccount = savedAccounts.find(account => account.email === inputEmail);
+            if (existingAccount) {
+                alert("This email address is already registered. Please proceed to login.");
+                navigateTo('screen-login');
+                return;
+            }
+
+            // Append account data models into system mock database storage configuration
+            savedAccounts.push({
                 name: inputName,
                 email: inputEmail,
                 phone: inputPhone,
                 pass: inputPass
-            };
+            });
  
-            // Pre-populate input configurations inside Step 2 login forms
-            document.getElementById('login-email').value = registeredUser.email;
-            document.getElementById('login-pass').value = registeredUser.pass;
+            // Reset input fields on the registration layout screen
+            document.getElementById('reg-name').value = "";
+            document.getElementById('reg-email').value = "";
+            document.getElementById('reg-phone').value = "";
+            document.getElementById('reg-pass').value = "";
+            document.getElementById('reg-privacy').checked = false;
+
+            // Clear login form fields entirely so they must be manually supplied by the user
+            document.getElementById('login-email').value = "";
+            document.getElementById('login-pass').value = "";
             document.getElementById('login-error').classList.add('hidden');
  
-            // Move strictly onto Step 2: Log In
+            // Forward user directly to Step 2: Log In screen
             navigateTo('screen-login');
         }
  
-        // Step 2: Verify inputs and advance to Step 3
+        // Step 2: Validate credentials supplied manually by the user
         function handleLogin(e) {
             e.preventDefault();
             const inputEmail = document.getElementById('login-email').value.trim().toLowerCase();
             const inputPass = document.getElementById('login-pass').value;
             const errorLabel = document.getElementById('login-error');
  
-            if (registeredUser && inputEmail === registeredUser.email && inputPass === registeredUser.pass) {
+            // Scan across stored account elements profiles array records
+            const validUser = savedAccounts.find(account => account.email === inputEmail && account.pass === inputPass);
+
+            if (validUser) {
                 errorLabel.classList.add('hidden');
+                loggedInUser = validUser;
                 
-                // Map out dashboard text layers
-                document.getElementById('user-display-name').innerText = registeredUser.name;
-                document.getElementById('summary-user-name').innerText = registeredUser.name;
-                document.getElementById('summary-user-phone').innerText = registeredUser.phone;
+                // Route target structural dynamic element details fields
+                document.getElementById('user-display-name').innerText = loggedInUser.name;
+                document.getElementById('summary-user-name').innerText = loggedInUser.name;
+                document.getElementById('summary-user-phone').innerText = loggedInUser.phone;
                 
-                // Route to Step 3: Queue Dashboard
+                // Complete clean login routing onto Step 3 dashboard panel view screen
                 navigateTo('screen-dashboard');
             } else {
                 errorLabel.classList.remove('hidden');
@@ -460,34 +480,44 @@
                 evaluateCustomInput();
             } else {
                 inputField.classList.add('hidden');
+                transientSelectedService = "";
+                updateQueueButtonState(false);
             }
         }
  
         function enableQueueButton(serviceName) {
             toggleCustomInput(false);
             transientSelectedService = serviceName;
-            
-            const btn = document.getElementById('btn-join-queue');
-            btn.disabled = false;
-            btn.className = "w-full bg-[#343a40] hover:bg-[#212529] text-[#e9ecef] border border-[#495057] font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer text-sm shadow-md";
+            updateQueueButtonState(true);
         }
- 
+
         function evaluateCustomInput() {
             const val = document.getElementById('custom-service-field').value.trim();
-            const btn = document.getElementById('btn-join-queue');
-            
             if(val.length > 0) {
                 transientSelectedService = val;
-                btn.disabled = false;
-                btn.className = "w-full bg-[#343a40] hover:bg-[#212529] text-[#e9ecef] border border-[#495057] font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer text-sm shadow-md";
+                updateQueueButtonState(true);
             } else {
-                btn.disabled = true;
-                btn.className = "w-full bg-neutral-100 text-neutral-400 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed transition-all text-sm";
+                transientSelectedService = "";
+                updateQueueButtonState(false);
             }
         }
- 
+
+        function updateQueueButtonState(enable) {
+            const btn = document.getElementById('btn-join-queue');
+            if(enable) {
+                btn.removeAttribute('disabled');
+                btn.classList.remove('bg-neutral-100', 'text-neutral-400', 'cursor-not-allowed');
+                btn.classList.add('bg-[#343a40]', 'hover:bg-[#212529]', 'text-[#e9ecef]', 'cursor-pointer');
+            } else {
+                btn.setAttribute('disabled', 'true');
+                btn.classList.remove('bg-[#343a40]', 'hover:bg-[#212529]', 'text-[#e9ecef]', 'cursor-pointer');
+                btn.classList.add('bg-neutral-100', 'text-neutral-400', 'cursor-not-allowed');
+            }
+        }
+
         // Submit into Step 4: You're In Queue
         function submitToQueue() {
+            if(!transientSelectedService) return;
             document.getElementById('live-service-label').innerText = "Service: " + transientSelectedService;
             document.getElementById('summary-service-title').innerText = transientSelectedService;
             navigateTo('screen-waiting');
@@ -497,9 +527,9 @@
             const stars = document.querySelectorAll('#stars-wrapper i');
             stars.forEach((star, index) => {
                 if(index < count) {
-                    star.className = "fa-solid fa-star text-amber-500 cursor-pointer";
+                    star.className = "fa-solid fa-star text-amber-500 cursor-pointer transition-colors";
                 } else {
-                    star.className = "fa-regular fa-star text-neutral-300 cursor-pointer";
+                    star.className = "fa-regular fa-star text-neutral-300 cursor-pointer transition-colors";
                 }
             });
         }
@@ -524,26 +554,22 @@
         // Choice Alternative A: Back to Main Dashboard
         function returnToMainDashboard() {
             cleanDashboardStates();
-            // Retains the logged-in user profile, jumps straight to Step 3
             navigateTo('screen-dashboard');
         }
  
-        // Choice Alternative B: End of Queue
+        // Choice Alternative B: End of Queue Session Termination
         function endOfQueue() {
             cleanDashboardStates();
-            // Erase registration object states completely
-            registeredUser = null;
             
-            // Clear inputs inside Registration and Login text fields
-            document.getElementById('reg-name').value = "";
-            document.getElementById('reg-email').value = "";
-            document.getElementById('reg-phone').value = "";
-            document.getElementById('reg-pass').value = "";
-            document.getElementById('reg-privacy').checked = false;
+            // Clear current active login state parameter context tracking pointer properties
+            loggedInUser = null;
+            
+            // Wipe standard interaction context text panels inputs entirely clean
             document.getElementById('login-email').value = "";
             document.getElementById('login-pass').value = "";
+            document.getElementById('login-error').classList.add('hidden');
             
-            // Route back down to initial Entrypoint step (Step 1)
+            // Bounce application view interface structure completely back down to step 1
             navigateTo('screen-register');
         }
     </script>
