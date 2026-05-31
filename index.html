@@ -4,187 +4,187 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CycleExpert - Queue Management System</title>
-    <!-- Tailwind CSS for high-fidelity dark UI rendering -->
+    <!-- Tailwind CSS for high-fidelity rendering -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for precise UI iconography mapping -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            background-color: #0d0d0d;
-            color: #ffffff;
+            background-color: #f3f4f6;
+            color: #1f2937;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .custom-radio:checked + label {
-            border-color: #38bdf8;
-            background-color: rgba(56, 189, 248, 0.03);
+            border-color: #0284c7;
+            background-color: rgba(2, 132, 199, 0.04);
         }
         .custom-radio:checked + label .radio-dot {
-            border-color: #38bdf8;
-            background-color: #38bdf8;
-            box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+            border-color: #0284c7;
+            background-color: #0284c7;
+            box-shadow: 0 0 8px rgba(2, 132, 199, 0.3);
         }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4 sm:p-6">
  
     <!-- Container Frame mirroring wireframe layout properties -->
-    <div class="w-full max-w-md bg-[#161616] rounded-2xl shadow-2xl border border-neutral-800/80 overflow-hidden p-6 relative">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl border border-neutral-200 overflow-hidden p-6 relative">
         
         <!-- Global App Branding Header referencing the official logo asset -->
-        <div class="flex flex-col items-center mb-6 border-b border-neutral-800/60 pb-5">
-            <img src="Official logo.png" alt="CycleExpert Logo" class="w-32 h-auto object-contain drop-shadow-[0_4px_12px_rgba(255,255,255,0.08)] rounded-xl">
+        <div class="flex flex-col items-center mb-6 border-b border-neutral-100 pb-5">
+            <img src="Official logo.jpg" alt="CycleExpert Logo" class="w-32 h-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.06)] rounded-xl">
         </div>
  
         <!-- ================= STEP 1: REGISTER ================= -->
         <div id="screen-register" class="space-y-6">
             <div class="text-center">
-                <h2 class="text-2xl font-bold tracking-tight text-white">Create Account</h2>
-                <p class="text-neutral-400 text-xs mt-1">Register to access queueing services</p>
+                <h2 class="text-2xl font-bold tracking-tight text-neutral-900">Create Account</h2>
+                <p class="text-neutral-500 text-xs mt-1">Register to access queueing services</p>
             </div>
             <form onsubmit="handleRegistration(event)" class="space-y-4">
                 <div class="relative">
-                    <i class="fa-regular fa-user absolute left-4 top-3.5 text-neutral-500 text-sm"></i>
-                    <input type="text" id="reg-name" placeholder="Juan Dela Cruz" required class="w-full bg-[#1f1f1f] border border-neutral-700/70 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-400 text-white transition-colors">
+                    <i class="fa-regular fa-user absolute left-4 top-3.5 text-neutral-400 text-sm"></i>
+                    <input type="text" id="reg-name" placeholder="Juan Dela Cruz" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
                 </div>
                 <div class="relative">
-                    <i class="fa-regular fa-envelope absolute left-4 top-3.5 text-neutral-500 text-sm"></i>
-                    <input type="email" id="reg-email" placeholder="juan@email.com" required class="w-full bg-[#1f1f1f] border border-neutral-700/70 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-400 text-white transition-colors">
+                    <i class="fa-regular fa-envelope absolute left-4 top-3.5 text-neutral-400 text-sm"></i>
+                    <input type="email" id="reg-email" placeholder="juan@email.com" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
                 </div>
                 <div class="relative">
-                    <i class="fa-solid fa-phone absolute left-4 top-3.5 text-neutral-500 text-sm"></i>
-                    <input type="tel" id="reg-phone" placeholder="+63 917 345 6789" required class="w-full bg-[#1f1f1f] border border-neutral-700/70 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-400 text-white transition-colors">
+                    <i class="fa-solid fa-phone absolute left-4 top-3.5 text-neutral-400 text-sm"></i>
+                    <input type="tel" id="reg-phone" placeholder="+63 917 345 6789" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
                 </div>
                 <div class="relative">
-                    <i class="fa-solid fa-lock absolute left-4 top-3.5 text-neutral-500 text-sm"></i>
-                    <input type="password" id="reg-pass" placeholder="••••••••" required class="w-full bg-[#1f1f1f] border border-neutral-700/70 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-400 text-white transition-colors">
+                    <i class="fa-solid fa-lock absolute left-4 top-3.5 text-neutral-400 text-sm"></i>
+                    <input type="password" id="reg-pass" placeholder="••••••••" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
                 </div>
-                <button type="submit" class="w-full bg-sky-400 hover:bg-sky-500 text-neutral-950 font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-sm shadow-md shadow-sky-400/10">
+                <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-sm shadow-md shadow-sky-600/10">
                     Create Account <i class="fa-solid fa-arrow-right text-xs"></i>
                 </button>
             </form>
-            <div class="text-center text-xs text-neutral-400">
-                Already have an account? <button onclick="navigateTo('screen-login')" class="text-sky-400 hover:underline focus:outline-none ml-1">Login</button>
+            <div class="text-center text-xs text-neutral-500">
+                Already have an account? <button onclick="navigateTo('screen-login')" class="text-sky-600 font-medium hover:underline focus:outline-none ml-1">Login</button>
             </div>
         </div>
  
         <!-- ================= STEP 2: LOG IN ================= -->
         <div id="screen-login" class="hidden space-y-6">
             <div class="text-center flex flex-col items-center">
-                <div class="w-12 h-12 bg-neutral-800/80 rounded-full flex items-center justify-center mb-2 border border-neutral-700/50">
-                    <i class="fa-solid fa-right-to-bracket text-sky-400 text-lg pl-0.5"></i>
+                <div class="w-12 h-12 bg-neutral-50 rounded-full flex items-center justify-center mb-2 border border-neutral-200">
+                    <i class="fa-solid fa-right-to-bracket text-sky-600 text-lg pl-0.5"></i>
                 </div>
-                <h2 class="text-2xl font-bold tracking-tight text-white">Welcome Back</h2>
-                <p class="text-neutral-400 text-xs mt-1">Login to access your queue dashboard</p>
+                <h2 class="text-2xl font-bold tracking-tight text-neutral-900">Welcome Back</h2>
+                <p class="text-neutral-500 text-xs mt-1">Login to access your queue dashboard</p>
             </div>
             <form onsubmit="handleLogin(event)" class="space-y-4">
                 <div class="relative">
-                    <i class="fa-regular fa-envelope absolute left-4 top-3.5 text-neutral-500 text-sm"></i>
-                    <input type="email" id="login-email" placeholder="juan@email.com" required class="w-full bg-[#1f1f1f] border border-neutral-700/70 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-400 text-white transition-colors">
+                    <i class="fa-regular fa-envelope absolute left-4 top-3.5 text-neutral-400 text-sm"></i>
+                    <input type="email" id="login-email" placeholder="juan@email.com" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
                 </div>
                 <div class="relative">
-                    <i class="fa-solid fa-lock absolute left-4 top-3.5 text-neutral-500 text-sm"></i>
-                    <input type="password" id="login-pass" placeholder="••••••••" required class="w-full bg-[#1f1f1f] border border-neutral-700/70 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-400 text-white transition-colors">
+                    <i class="fa-solid fa-lock absolute left-4 top-3.5 text-neutral-400 text-sm"></i>
+                    <input type="password" id="login-pass" placeholder="••••••••" required class="w-full bg-neutral-50 border border-neutral-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
                 </div>
-                <div id="login-error" class="text-red-400 text-xs text-center hidden font-medium">
+                <div id="login-error" class="text-red-600 text-xs text-center hidden font-medium">
                     <i class="fa-solid fa-circle-exclamation mr-1"></i> Invalid registration credentials mismatch.
                 </div>
-                <button type="submit" class="w-full bg-sky-400 hover:bg-sky-500 text-neutral-950 font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-sm shadow-md shadow-sky-400/10">
+                <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 mt-2 text-sm shadow-md shadow-sky-600/10">
                     Login <i class="fa-solid fa-arrow-right text-xs"></i>
                 </button>
             </form>
-            <div class="text-center text-xs text-neutral-400">
-                Don't have an account? <button onclick="navigateTo('screen-register')" class="text-sky-400 hover:underline focus:outline-none ml-1">Register</button>
+            <div class="text-center text-xs text-neutral-500">
+                Don't have an account? <button onclick="navigateTo('screen-register')" class="text-sky-600 font-medium hover:underline focus:outline-none ml-1">Register</button>
             </div>
         </div>
  
         <!-- ================= STEP 3: QUEUE DASHBOARD ================= -->
         <div id="screen-dashboard" class="hidden space-y-6">
             <div class="text-center">
-                <div class="text-xs text-sky-400 font-medium mb-1 bg-sky-400/5 inline-block px-3 py-1 rounded-full border border-sky-400/10">
+                <div class="text-xs text-sky-700 font-semibold mb-1 bg-sky-50 inline-block px-3 py-1 rounded-full border border-sky-100">
                     <i class="fa-regular fa-circle-user mr-1"></i> <span id="user-display-name">Guest</span>
                 </div>
-                <h2 class="text-xl font-bold tracking-tight text-white">Queue Dashboard</h2>
-                <p class="text-neutral-400 text-xs mt-1">Select a service and join the queue</p>
+                <h2 class="text-xl font-bold tracking-tight text-neutral-900">Queue Dashboard</h2>
+                <p class="text-neutral-500 text-xs mt-1">Select a service and join the queue</p>
             </div>
  
             <!-- Stats Module Layout -->
             <div class="grid grid-cols-2 gap-4">
-                <div class="bg-[#1f1f1f] p-3.5 rounded-xl border border-neutral-800 text-center">
-                    <p class="text-[11px] text-neutral-400 uppercase tracking-wider">Current Queue</p>
-                    <p class="text-2xl font-bold text-sky-400 mt-1">#11</p>
+                <div class="bg-neutral-50 p-3.5 rounded-xl border border-neutral-200 text-center">
+                    <p class="text-[11px] text-neutral-500 font-medium uppercase tracking-wider">Current Queue</p>
+                    <p class="text-2xl font-bold text-sky-600 mt-1">#11</p>
                 </div>
-                <div class="bg-[#1f1f1f] p-3.5 rounded-xl border border-neutral-800 text-center">
-                    <p class="text-[11px] text-neutral-400 uppercase tracking-wider">Est. Wait</p>
-                    <p class="text-2xl font-bold text-white mt-1">1 min</p>
+                <div class="bg-neutral-50 p-3.5 rounded-xl border border-neutral-200 text-center">
+                    <p class="text-[11px] text-neutral-500 font-medium uppercase tracking-wider">Est. Wait</p>
+                    <p class="text-2xl font-bold text-neutral-800 mt-1">1 min</p>
                 </div>
             </div>
  
             <!-- Service Selection Grid -->
             <div>
-                <p class="text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-3">Select Service:</p>
+                <p class="text-xs font-bold text-neutral-700 uppercase tracking-wider mb-3">Select Service:</p>
                 <div class="grid grid-cols-2 gap-3" id="services-grid">
                     
                     <div>
                         <input type="radio" name="srv_opt" id="opt1" value="Oil Change" class="hidden custom-radio" onchange="enableQueueButton('Oil Change')">
-                        <label for="opt1" class="flex items-center gap-2.5 text-xs bg-[#1f1f1f] border border-neutral-800 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-700 select-none">
-                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-600 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
-                            <span class="truncate text-neutral-200">Oil Change</span>
+                        <label for="opt1" class="flex items-center gap-2.5 text-xs bg-white border border-neutral-200 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-300 select-none">
+                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-300 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
+                            <span class="truncate text-neutral-700 font-medium">Oil Change</span>
                         </label>
                     </div>
  
                     <div>
                         <input type="radio" name="srv_opt" id="opt2" value="Tire Replacement" class="hidden custom-radio" onchange="enableQueueButton('Tire Replacement')">
-                        <label for="opt2" class="flex items-center gap-2.5 text-xs bg-[#1f1f1f] border border-neutral-800 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-700 select-none">
-                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-600 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
-                            <span class="truncate text-neutral-200">Tire Replacement</span>
+                        <label for="opt2" class="flex items-center gap-2.5 text-xs bg-white border border-neutral-200 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-300 select-none">
+                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-300 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
+                            <span class="truncate text-neutral-700 font-medium">Tire Replacement</span>
                         </label>
                     </div>
  
                     <div>
                         <input type="radio" name="srv_opt" id="opt3" value="General Checkup" class="hidden custom-radio" onchange="enableQueueButton('General Checkup')">
-                        <label for="opt3" class="flex items-center gap-2.5 text-xs bg-[#1f1f1f] border border-neutral-800 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-700 select-none">
-                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-600 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
-                            <span class="truncate text-neutral-200">General Checkup</span>
+                        <label for="opt3" class="flex items-center gap-2.5 text-xs bg-white border border-neutral-200 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-300 select-none">
+                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-300 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
+                            <span class="truncate text-neutral-700 font-medium">General Checkup</span>
                         </label>
                     </div>
  
                     <div>
                         <input type="radio" name="srv_opt" id="opt4" value="Brake Service" class="hidden custom-radio" onchange="enableQueueButton('Brake Service')">
-                        <label for="opt4" class="flex items-center gap-2.5 text-xs bg-[#1f1f1f] border border-neutral-800 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-700 select-none">
-                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-600 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
-                            <span class="truncate text-neutral-200">Brake Service</span>
+                        <label for="opt4" class="flex items-center gap-2.5 text-xs bg-white border border-neutral-200 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-300 select-none">
+                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-300 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
+                            <span class="truncate text-neutral-700 font-medium">Brake Service</span>
                         </label>
                     </div>
  
                     <div>
                         <input type="radio" name="srv_opt" id="opt5" value="Engine Tune-up" class="hidden custom-radio" onchange="enableQueueButton('Engine Tune-up')">
-                        <label for="opt5" class="flex items-center gap-2.5 text-xs bg-[#1f1f1f] border border-neutral-800 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-700 select-none">
-                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-600 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
-                            <span class="truncate text-neutral-200">Engine Tune-up</span>
+                        <label for="opt5" class="flex items-center gap-2.5 text-xs bg-white border border-neutral-200 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-300 select-none">
+                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-300 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
+                            <span class="truncate text-neutral-700 font-medium">Engine Tune-up</span>
                         </label>
                     </div>
  
                     <div>
                         <input type="radio" name="srv_opt" id="opt6" value="Chain & Sprocket" class="hidden custom-radio" onchange="enableQueueButton('Chain & Sprocket')">
-                        <label for="opt6" class="flex items-center gap-2.5 text-xs bg-[#1f1f1f] border border-neutral-800 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-700 select-none">
-                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-600 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
-                            <span class="truncate text-neutral-200">Chain & Sprocket</span>
+                        <label for="opt6" class="flex items-center gap-2.5 text-xs bg-white border border-neutral-200 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-300 select-none">
+                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-300 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
+                            <span class="truncate text-neutral-700 font-medium">Chain & Sprocket</span>
                         </label>
                     </div>
  
                     <div class="col-span-2">
                         <input type="radio" name="srv_opt" id="opt7" value="Other" class="hidden custom-radio" onchange="toggleCustomInput(true)">
-                        <label for="opt7" class="flex items-center gap-2.5 text-xs bg-[#1f1f1f] border border-neutral-800 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-700 select-none">
-                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-600 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
-                            <span class="truncate text-neutral-200">Other (Please specify)</span>
+                        <label for="opt7" class="flex items-center gap-2.5 text-xs bg-white border border-neutral-200 rounded-xl p-3.5 cursor-pointer transition-all hover:border-neutral-300 select-none">
+                            <span class="w-3.5 h-3.5 rounded-full border border-neutral-300 flex items-center justify-center p-0.5 radio-dot shrink-0 transition-all"></span>
+                            <span class="truncate text-neutral-700 font-medium">Other (Please specify)</span>
                         </label>
                     </div>
                 </div>
                 
-                <input type="text" id="custom-service-field" placeholder="Specify required service..." oninput="evaluateCustomInput()" class="hidden w-full mt-3 bg-[#1f1f1f] border border-neutral-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-400 text-white transition-colors">
+                <input type="text" id="custom-service-field" placeholder="Specify required service..." oninput="evaluateCustomInput()" class="hidden w-full mt-3 bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-600 focus:bg-white text-neutral-900 transition-colors">
             </div>
  
-            <button onclick="submitToQueue()" id="btn-join-queue" disabled class="w-full bg-sky-400/20 text-neutral-500 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed transition-all text-sm">
+            <button onclick="submitToQueue()" id="btn-join-queue" disabled class="w-full bg-neutral-100 text-neutral-400 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed transition-all text-sm">
                 Join Queue <i class="fa-solid fa-arrow-right text-xs"></i>
             </button>
         </div>
@@ -192,121 +192,121 @@
         <!-- ================= STEP 4: YOU'RE IN QUEUE ================= -->
         <div id="screen-waiting" class="hidden text-center space-y-6 py-4">
             <div class="relative flex items-center justify-center mx-auto w-20 h-20">
-                <div class="absolute inset-0 rounded-full border-4 border-sky-400/10 border-t-sky-400 animate-spin"></div>
-                <i class="fa-regular fa-clock text-sky-400 text-3xl"></i>
+                <div class="absolute inset-0 rounded-full border-4 border-neutral-200 border-t-sky-600 animate-spin"></div>
+                <i class="fa-regular fa-clock text-sky-600 text-3xl"></i>
             </div>
  
             <div class="space-y-1">
-                <h2 class="text-2xl font-bold text-white">You're in Queue!</h2>
-                <p class="text-neutral-400 text-sm">Your queue number: <span class="text-sky-400 font-bold">#12</span></p>
-                <p class="text-xs text-neutral-500 pt-1">Please wait while we process your request...</p>
+                <h2 class="text-2xl font-bold text-neutral-900">You're in Queue!</h2>
+                <p class="text-neutral-500 text-sm">Your queue number: <span class="text-sky-600 font-bold">#12</span></p>
+                <p class="text-xs text-neutral-400 pt-1">Please wait while we process your request...</p>
             </div>
  
-            <div class="bg-[#1f1f1f] border border-neutral-800/80 py-4 rounded-xl mx-4">
-                <p class="text-[10px] text-neutral-400 uppercase tracking-wider">Estimated Wait Time</p>
-                <p class="text-2xl font-black text-white mt-1">1 minute</p>
+            <div class="bg-neutral-50 border border-neutral-200 py-4 rounded-xl mx-4">
+                <p class="text-[10px] text-neutral-500 font-semibold uppercase tracking-wider">Estimated Wait Time</p>
+                <p class="text-2xl font-black text-neutral-800 mt-1">1 minute</p>
             </div>
  
-            <button onclick="navigateTo('screen-servicing')" class="w-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 font-medium py-2.5 rounded-xl text-xs transition-colors tracking-wide">
+            <button onclick="navigateTo('screen-servicing')" class="w-full bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 font-medium py-2.5 rounded-xl text-xs transition-colors tracking-wide">
                 Simulate Admin: Begin Service <i class="fa-solid fa-wrench ml-1 text-[10px]"></i>
             </button>
         </div>
  
         <!-- ================= STEP 5: BEING SERVICED ================= -->
         <div id="screen-servicing" class="hidden text-center space-y-6 py-4">
-            <div class="relative flex items-center justify-center mx-auto w-20 h-20 bg-amber-500/5 rounded-full border border-amber-500/20 text-amber-400">
+            <div class="relative flex items-center justify-center mx-auto w-20 h-20 bg-amber-50 rounded-full border border-amber-200 text-amber-600">
                 <i class="fa-solid fa-screwdriver-wrench text-3xl animate-bounce"></i>
             </div>
  
             <div class="space-y-1">
-                <h2 class="text-2xl font-bold text-amber-400">Being Serviced</h2>
-                <p class="text-neutral-400 text-sm px-4">Our master mechanic is currently operating on your motorcycle.</p>
-                <p class="text-xs text-sky-400 font-medium bg-sky-400/5 inline-block px-3 py-1 rounded-full border border-sky-400/10 mt-3" id="live-service-label">Service: Engine Tune-up</p>
+                <h2 class="text-2xl font-bold text-amber-600">Being Serviced</h2>
+                <p class="text-neutral-600 text-sm px-4">Our master mechanic is currently operating on your motorcycle.</p>
+                <p class="text-xs text-sky-700 font-semibold bg-sky-50 inline-block px-3 py-1 rounded-full border border-sky-100 mt-3" id="live-service-label">Service: Engine Tune-up</p>
             </div>
  
-            <div class="bg-[#1f1f1f] border border-neutral-800 p-4 rounded-xl mx-4 text-left text-xs space-y-2.5">
-                <div class="flex justify-between"><span class="text-neutral-400">Assigned Station:</span><span class="text-white font-semibold">Bay Counter #02</span></div>
-                <div class="flex justify-between"><span class="text-neutral-400">Status:</span><span class="text-amber-400 font-semibold animate-pulse">Active Operations</span></div>
+            <div class="bg-neutral-50 border border-neutral-200 p-4 rounded-xl mx-4 text-left text-xs space-y-2.5">
+                <div class="flex justify-between"><span class="text-neutral-500 font-medium">Assigned Station:</span><span class="text-neutral-800 font-bold">Bay Counter #02</span></div>
+                <div class="flex justify-between"><span class="text-neutral-500 font-medium">Status:</span><span class="text-amber-600 font-bold animate-pulse">Active Operations</span></div>
             </div>
  
-            <button onclick="navigateTo('screen-cashier')" class="w-full bg-emerald-500 hover:bg-emerald-600 text-neutral-950 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/10 text-sm">
+            <button onclick="navigateTo('screen-cashier')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/10 text-sm">
                 Proceed to Cashier <i class="fa-solid fa-receipt text-xs"></i>
             </button>
         </div>
  
         <!-- ================= STEP 6: PROCEED TO CASHIER ================= -->
         <div id="screen-cashier" class="hidden text-center space-y-6 py-4">
-            <div class="w-16 h-16 bg-sky-500/5 border border-sky-500/20 rounded-full flex items-center justify-center mx-auto text-sky-400 text-2xl shadow-md">
+            <div class="w-16 h-16 bg-sky-50 border border-sky-100 rounded-full flex items-center justify-center mx-auto text-sky-600 text-2xl shadow-sm">
                 <i class="fa-solid fa-cash-register"></i>
             </div>
  
             <div class="space-y-1">
-                <h2 class="text-2xl font-bold text-white">Proceed to Cashier</h2>
-                <p class="text-neutral-400 text-sm px-4">Your mechanical operations are complete. Please visit the payment counter.</p>
+                <h2 class="text-2xl font-bold text-neutral-900">Proceed to Cashier</h2>
+                <p class="text-neutral-600 text-sm px-4">Your mechanical operations are complete. Please visit the payment counter.</p>
             </div>
  
-            <div class="bg-[#1f1f1f] border border-neutral-800 p-4 rounded-xl mx-4 text-left text-xs space-y-2.5">
-                <div class="flex justify-between"><span class="text-neutral-400">Queue Identifier:</span><span class="text-sky-400 font-bold">#12</span></div>
-                <div class="flex justify-between"><span class="text-neutral-400">Invoice Status:</span><span class="text-emerald-400 font-semibold">Pending Settlement</span></div>
+            <div class="bg-neutral-50 border border-neutral-200 p-4 rounded-xl mx-4 text-left text-xs space-y-2.5">
+                <div class="flex justify-between"><span class="text-neutral-500 font-medium">Queue Identifier:</span><span class="text-sky-600 font-bold">#12</span></div>
+                <div class="flex justify-between"><span class="text-neutral-500 font-medium">Invoice Status:</span><span class="text-emerald-600 font-bold">Pending Settlement</span></div>
             </div>
  
-            <button onclick="navigateTo('screen-complete')" class="w-full bg-sky-400 hover:bg-sky-500 text-neutral-950 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 text-sm shadow-md shadow-sky-400/10">
+            <button onclick="navigateTo('screen-complete')" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 text-sm shadow-md shadow-sky-600/10">
                 Finalize & Close Ticket <i class="fa-solid fa-check-double text-xs"></i>
             </button>
         </div>
  
         <!-- ================= STEP 7: SERVICE COMPLETE ================= -->
         <div id="screen-complete" class="hidden text-center space-y-5 py-2">
-            <div class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 rounded-full flex items-center justify-center mx-auto text-emerald-400 text-xl shadow-md">
+            <div class="w-14 h-14 bg-emerald-50 border border-emerald-100 rounded-full flex items-center justify-center mx-auto text-emerald-600 text-xl shadow-sm">
                 <i class="fa-regular fa-circle-check"></i>
             </div>
  
             <div class="space-y-1">
-                <h2 class="text-2xl font-bold tracking-tight text-white">Service Complete!</h2>
-                <p class="text-neutral-400 text-xs">Thank you for choosing <span class="text-sky-400 font-medium">CycleExpert</span></p>
+                <h2 class="text-2xl font-bold tracking-tight text-neutral-900">Service Complete!</h2>
+                <p class="text-neutral-500 text-xs">Thank you for choosing <span class="text-sky-600 font-semibold">CycleExpert</span></p>
             </div>
  
             <!-- Ticket Metadata Summary Module showing the dynamic data -->
-            <div class="bg-[#1f1f1f] rounded-xl border border-neutral-800 p-3.5 text-xs space-y-2.5 mx-2 text-left">
+            <div class="bg-neutral-50 rounded-xl border border-neutral-200 p-3.5 text-xs space-y-2.5 mx-2 text-left">
                 <div class="flex justify-between">
-                    <span class="text-neutral-400">Customer Name</span>
-                    <span class="font-medium text-white truncate max-w-[180px]" id="summary-user-name">---</span>
+                    <span class="text-neutral-500 font-medium">Customer Name</span>
+                    <span class="font-bold text-neutral-800 truncate max-w-[180px]" id="summary-user-name">---</span>
                 </div>
-                <div class="flex justify-between border-t border-neutral-800/60 pt-2">
-                    <span class="text-neutral-400">Phone Contact</span>
-                    <span class="font-medium text-white" id="summary-user-phone">---</span>
+                <div class="flex justify-between border-t border-neutral-200 pt-2">
+                    <span class="text-neutral-500 font-medium">Phone Contact</span>
+                    <span class="font-semibold text-neutral-800" id="summary-user-phone">---</span>
                 </div>
-                <div class="flex justify-between border-t border-neutral-800/60 pt-2">
-                    <span class="text-neutral-400">Service rendered</span>
-                    <span class="font-medium text-sky-400 truncate max-w-[180px]" id="summary-service-title">---</span>
+                <div class="flex justify-between border-t border-neutral-200 pt-2">
+                    <span class="text-neutral-500 font-medium">Service rendered</span>
+                    <span class="font-bold text-sky-700 truncate max-w-[180px]" id="summary-service-title">---</span>
                 </div>
-                <div class="flex justify-between border-t border-neutral-800/60 pt-2">
-                    <span class="text-neutral-400">Queue #</span>
-                    <span class="font-bold text-white">#12</span>
+                <div class="flex justify-between border-t border-neutral-200 pt-2">
+                    <span class="text-neutral-500 font-medium">Queue #</span>
+                    <span class="font-black text-neutral-900">#12</span>
                 </div>
             </div>
  
             <!-- Experience Feedback Star Interaction Component -->
             <div class="space-y-2">
-                <p class="text-[11px] text-neutral-400">Rate your experience</p>
+                <p class="text-[11px] text-neutral-500 font-medium">Rate your experience</p>
                 <div class="flex justify-center gap-3 text-xl" id="stars-wrapper">
-                    <i class="fa-regular fa-star text-neutral-600 cursor-pointer transition-colors" onclick="setRating(1)"></i>
-                    <i class="fa-regular fa-star text-neutral-600 cursor-pointer transition-colors" onclick="setRating(2)"></i>
-                    <i class="fa-regular fa-star text-neutral-600 cursor-pointer transition-colors" onclick="setRating(3)"></i>
-                    <i class="fa-regular fa-star text-neutral-600 cursor-pointer transition-colors" onclick="setRating(4)"></i>
-                    <i class="fa-regular fa-star text-neutral-600 cursor-pointer transition-colors" onclick="setRating(5)"></i>
+                    <i class="fa-regular fa-star text-neutral-300 cursor-pointer transition-colors" onclick="setRating(1)"></i>
+                    <i class="fa-regular fa-star text-neutral-300 cursor-pointer transition-colors" onclick="setRating(2)"></i>
+                    <i class="fa-regular fa-star text-neutral-300 cursor-pointer transition-colors" onclick="setRating(3)"></i>
+                    <i class="fa-regular fa-star text-neutral-300 cursor-pointer transition-colors" onclick="setRating(4)"></i>
+                    <i class="fa-regular fa-star text-neutral-300 cursor-pointer transition-colors" onclick="setRating(5)"></i>
                 </div>
             </div>
  
             <!-- ================= CHOICE AREA: ACTION PANELS ================= -->
-            <div class="pt-4 border-t border-neutral-800/60 mx-2 space-y-2.5">
+            <div class="pt-4 border-t border-neutral-200 mx-2 space-y-2.5">
                 <!-- Choice A: Return to Main Dashboard to request another service -->
-                <button onclick="returnToMainDashboard()" class="w-full bg-sky-400 hover:bg-sky-500 text-neutral-950 font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-xs transition-colors shadow-md shadow-sky-400/10">
+                <button onclick="returnToMainDashboard()" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-xs transition-colors shadow-md shadow-sky-600/10">
                     <i class="fa-solid fa-gauge-high text-[11px]"></i> Back to Main
                 </button>
                 
                 <!-- Choice B: Terminate Session/End of Queue -->
-                <button onclick="endOfQueue()" class="w-full bg-neutral-800 hover:bg-neutral-700 text-red-400 font-semibold py-3 rounded-xl flex items-center justify-center gap-2 text-xs transition-colors border border-neutral-700/50">
+                <button onclick="endOfQueue()" class="w-full bg-neutral-100 hover:bg-neutral-200 text-red-600 font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-xs transition-colors border border-neutral-200">
                     <i class="fa-solid fa-right-from-bracket text-[11px]"></i> End of Queue
                 </button>
             </div>
@@ -396,7 +396,7 @@
             
             const btn = document.getElementById('btn-join-queue');
             btn.disabled = false;
-            btn.className = "w-full bg-sky-400 hover:bg-sky-500 text-neutral-950 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer text-sm shadow-md shadow-sky-400/10";
+            btn.className = "w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer text-sm shadow-md shadow-sky-600/10";
         }
  
         function evaluateCustomInput() {
@@ -406,10 +406,10 @@
             if(val.length > 0) {
                 transientSelectedService = val;
                 btn.disabled = false;
-                btn.className = "w-full bg-sky-400 hover:bg-sky-500 text-neutral-950 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer text-sm shadow-md shadow-sky-400/10";
+                btn.className = "w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer text-sm shadow-md shadow-sky-600/10";
             } else {
                 btn.disabled = true;
-                btn.className = "w-full bg-sky-400/20 text-neutral-500 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed transition-all text-sm";
+                btn.className = "w-full bg-neutral-100 text-neutral-400 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed transition-all text-sm";
             }
         }
  
@@ -424,9 +424,9 @@
             const stars = document.querySelectorAll('#stars-wrapper i');
             stars.forEach((star, index) => {
                 if(index < count) {
-                    star.className = "fa-solid fa-star text-amber-400 cursor-pointer";
+                    star.className = "fa-solid fa-star text-amber-500 cursor-pointer";
                 } else {
-                    star.className = "fa-regular fa-star text-neutral-600 cursor-pointer";
+                    star.className = "fa-regular fa-star text-neutral-300 cursor-pointer";
                 }
             });
         }
@@ -442,7 +442,7 @@
             
             const btn = document.getElementById('btn-join-queue');
             btn.disabled = true;
-            btn.className = "w-full bg-sky-400/20 text-neutral-500 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed transition-all text-sm";
+            btn.className = "w-full bg-neutral-100 text-neutral-400 font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed transition-all text-sm";
             
             setRating(0);
         }
