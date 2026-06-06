@@ -611,7 +611,7 @@
         function returnToMainDashboard() { initializeDashboard(); navigateTo('screen-dashboard'); }
 
         function proceedToServicingScreen() {
-            document.getElementById('live-service-label').textContent = `Bay Unit: ${selectedServiceName}`;
+            document.getElementById('live-service-label').textContent = `Service: ${selectedServiceName}`;
             const entryBlock = document.getElementById('mechanic-cost-entry');
             const commitBtn = document.getElementById('btn-proceed-cashier');
             const dynamicCostInput = document.getElementById('mechanic-custom-cost');
